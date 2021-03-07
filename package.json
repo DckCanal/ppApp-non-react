@@ -1,0 +1,26 @@
+{
+  "name": "ppapp",
+  "version": "0.0.1",
+  "description": "WebApp per gestire la Progressione Personale dei ragazzi scout, secondo il metodo AGESCI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DckCanal/ppApp.git"
+  },
+  "keywords": [
+    "AGESCI",
+    "PPU",
+    "Progressione",
+    "Personale",
+    "scout"
+  ],
+  "author": "Marco De Canal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DckCanal/ppApp/issues"
+  },
+  "homepage": "https://github.com/DckCanal/ppApp#readme"
+}
