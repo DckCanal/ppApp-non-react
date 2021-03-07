@@ -2,7 +2,7 @@
   "name": "ppapp",
   "version": "0.0.1",
   "description": "WebApp per gestire la Progressione Personale dei ragazzi scout, secondo il metodo AGESCI",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
