@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/DckCanal/ppApp/issues"
   },
-  "homepage": "https://github.com/DckCanal/ppApp#readme"
+  "homepage": "https://github.com/DckCanal/ppApp#readme",
+  "devDependencies": {
+    "parcel": "^1.12.4"
+  }
 }

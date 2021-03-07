@@ -2,6 +2,17 @@
     Data examples - will be retrieved from web API
 */
 
+const account = {
+  username: "e.cocci",
+  email: "ecocci372@gmail.com",
+  nome: "Elena Cocci",
+  unita: {
+    codice: "EG",
+    branca: "Reparto",
+    nome: "Avalon",
+  },
+};
+
 const gruppo = {
   nome: "San Giovanni in Marignano 1",
   dateAttivita: [
@@ -27,13 +38,11 @@ const ragazzi = [
     ],
     unita: {
       branca: "Reparto",
+      codice: "EG",
       nome: "Avalon",
       divisione: { tipo: "Squadriglia", nome: "Puma" },
     },
-    tappe: [
-      { nome: "Scoperta", data: "12/09/2017" },
-      { nome: "Competenza", data: "22/03/2019" },
-    ],
+    tappe: { scoperta: "12/09/2017", competenza: "22/03/2019" },
     note: [
       {
         testo:
@@ -114,13 +123,11 @@ const ragazzi = [
     ],
     unita: {
       branca: "Reparto",
+      codice: "EG",
       nome: "Avalon",
       divisione: { tipo: "Squadriglia", nome: "Gazzelle" },
     },
-    tappe: [
-      { nome: "Scoperta", data: "12/09/2018" },
-      { nome: "Competenza", data: "22/03/2020" },
-    ],
+    tappe: { scoperta: "12/09/2018", competenza: "22/03/2020" },
     note: [
       {
         testo:
@@ -187,3 +194,64 @@ const ragazzi = [
     ],
   },
 ];
+
+class App {
+  constructor() {
+    this.container = document.querySelector(".container");
+    this.containerHeader = document.querySelector(".container_header");
+    this.containerMain = document.querySelector(".container-main");
+    this.vistaRagazzo(ragazzi[0]);
+  }
+  vistaRagazzo(ragazzo) {
+    this.containerHeader.innerHTML += `
+    <div class="nome-ragazzo"><h2>${[ragazzo.nome, ragazzo.cognome].join(
+      " "
+    )}<h2></div>
+    `;
+    const ultimaTappa = this._ultimaTappaRagazzo(ragazzo);
+    console.log(ultimaTappa);
+    if (ultimaTappa) {
+      let tappaHtml = `<p class="tappa-ragazzo">`;
+      tappaHtml += `${ultimaTappa[0]} - <span class="tappa-attuale-ragazzo">${ultimaTappa[1]}</span>`;
+      tappaHtml += `</p>`;
+      this.containerHeader.innerHTML += tappaHtml;
+    }
+
+    this.visualizzaSpecialitaRagazzo(ragazzo);
+  }
+  vistaElencoRagazzi(unita) {}
+  visualizzaSpecialitaRagazzo(ragazzo) {
+    ragazzo.specialita.forEach((spec) => {
+      this.containerMain.innerHTML += `
+      <p class="specialita">${spec.nome} <span class="data-specialita">${spec.data}</span></p>
+    `;
+    });
+  }
+  visualizzaSpecialitaUnita(unita) {}
+  visualizzaMeteUnita(unita) {}
+  visualizzaNoteUnita(unita) {}
+  _ultimaTappaRagazzo(ragazzo) {
+    if (ragazzo.tappe.responsabilita)
+      return ["Responsabilità", ragazzo.tappe.responsabilita];
+    if (ragazzo.tappe.competenza)
+      return ["Competenza", ragazzo.tappe.competenza];
+    if (ragazzo.tappe.scoperta) return ["Scoperta", ragazzo.tappe.scoperta];
+  }
+}
+
+const app = new App();
+
+// const visualizzaSpecialita = function (spec, el) {
+//   const html = `
+//     <p class="specialita">${spec.nome} <span class="data-specialita">${spec.data}</span></p>
+//   `;
+//   el.innerHTML += html;
+// };
+
+// const container = document.querySelector(".container");
+// const containerHeader = document.querySelector(".container_header");
+// const containerMain = document.querySelector(".container-main");
+
+// ragazzi[0].specialita.forEach((spec) =>
+//   visualizzaSpecialita(spec, containerMain)
+// );
