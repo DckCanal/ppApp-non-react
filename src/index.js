@@ -206,7 +206,10 @@ class App {
     this.containerHeader.innerHTML += `
     <div class="nome-ragazzo"><h2>${[ragazzo.nome, ragazzo.cognome].join(
       " "
-    )}<h2></div>
+    )}</h2>
+      <h3>${ragazzo.unita.branca} - ${ragazzo.unita.nome}</h3>
+      <h4>${ragazzo.unita.divisione.tipo} ${ragazzo.unita.divisione.nome}</h4>
+    </div>
     `;
     const ultimaTappa = this._ultimaTappaRagazzo(ragazzo);
     console.log(ultimaTappa);
@@ -218,6 +221,7 @@ class App {
     }
 
     this.visualizzaSpecialitaRagazzo(ragazzo);
+    this.visualizzaMeteRagazzo(ragazzo);
   }
   vistaElencoRagazzi(unita) {}
   visualizzaSpecialitaRagazzo(ragazzo) {
@@ -226,6 +230,18 @@ class App {
       <p class="specialita">${spec.nome} <span class="data-specialita">${spec.data}</span></p>
     `;
     });
+  }
+  visualizzaMeteRagazzo(ragazzo) {
+    let html = `<div class="meta-container"><h3>Meta</h3>`;
+    ragazzo.mete.forEach((meta) => {
+      html += `<p>${meta.testo}</p>`;
+      html += `<p>Inizio: ${meta.dataInizio}</p>`;
+      html += `<p>Da concludere entro il ${meta.dataScadenza}</p>`;
+      html += `<p>Terminata il ${meta.dataFine}</p>`;
+      html += ``;
+    });
+    html += `</div>`;
+    this.containerMain.innerHTML += html;
   }
   visualizzaSpecialitaUnita(unita) {}
   visualizzaMeteUnita(unita) {}
